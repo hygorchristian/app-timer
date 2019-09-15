@@ -1,0 +1,10 @@
+export const primaryLight = '#7E57C2';
+export const primary = '#512DA8';
+export const primaryDark = '#311B92';
+export const secondaryLight = '#5C68C3';
+export const secondary = '#2E4AA6';
+export const secondaryDark = '#16428C';
+export const textRed = '#b13a35';
+export const textOrange = '#b17036';
+export const textGreen = '#00ac56';
+export const textblue = '#009ea0';
