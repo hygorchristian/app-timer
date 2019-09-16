@@ -49,7 +49,7 @@ export const ProjectControl = styled.TouchableOpacity`
 export const ProjectAction = styled(Icon).attrs({
   size: 24,
   color: primary,
-  name: 'pause',
+  name: ({ isPlaying }) => (isPlaying ? 'pause' : 'play-arrow'),
 })``;
 
 export const Slider = styled(SliderBase).attrs({

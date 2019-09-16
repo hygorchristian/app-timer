@@ -1,0 +1,35 @@
+{
+  "tempo_projetos": [
+    {
+      "projeto_id": 1,
+      "inicio": 1223234342,
+      "fim": 1223243434,
+      "tempo_total": 1223434,
+      "valor_adquirido": 21.46
+    }
+  ],
+  "tempo_diario": [
+    {
+      "inicio": 1232343434,
+      "fim": 2324343434,
+      "tempo_total": 1232323
+    }
+  ],
+  "projetos": [
+    {
+      "id": 1,
+      "nome": "Carl Zeiss",
+      "valor_hora": 35,
+      "tempo_diario": 8,
+      "color": "#311B92"
+    }
+  ],
+  "configuracoes": [
+    {
+      "id": 1,
+      "tempo_diario_maximo": 10,
+      "notificacoes": true,
+      "sons": true
+    }
+  ]
+}
