@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1013092207648",
+    "firebase_url": "https://horasprojeto.firebaseio.com",
+    "project_id": "horasprojeto",
+    "storage_bucket": "horasprojeto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013092207648:android:cab48b2e9a38310bd44045",
+        "android_client_info": {
+          "package_name": "br.com.hygor.horas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013092207648-gjk0bkj9p1na436hrg30sl0sv6d979ea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.hygor.horas",
+            "certificate_hash": "b8ccaf7316a8556606a4a9860a55bc511db2b944"
+          }
+        },
+        {
+          "client_id": "1013092207648-e05kudous14sgqc5nvglj9qgli7n1df9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJvmTDsKQIzBIaaoMfYqxFChRHcQqD2GU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013092207648-e05kudous14sgqc5nvglj9qgli7n1df9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

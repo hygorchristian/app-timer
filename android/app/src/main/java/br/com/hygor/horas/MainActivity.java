@@ -1,4 +1,4 @@
-package com.horas;
+package br.com.hygor.horas;
 
 import com.facebook.react.ReactActivity;
 

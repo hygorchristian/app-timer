@@ -1,8 +1,12 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
-import { AuthTypes } from '../ducks/auth';
-import { loadAuth } from './auth';
+import { TimerTypes } from '../ducks/timer';
+
+import { timerChanged } from './timer';
 
 export default function*() {
-  return yield all([takeLatest(AuthTypes.LOAD_AUTH_REQUEST, loadAuth)]);
+  return yield all([
+    takeLatest(TimerTypes.TIMER_ADD_PROJECT, timerChanged),
+    takeLatest(TimerTypes.TIMER_REMOVE_PROJECT, timerChanged),
+  ]);
 }
