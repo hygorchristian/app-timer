@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTasksTimeToday } from '~/services/firebase';
 
 import {
   ProjetoContainer,
@@ -15,13 +16,14 @@ import {
   Slider,
 } from './styles';
 
-import { formatMilisseconds } from '~/utils/date';
+import { formatMilisseconds, getTimeTodayString } from '~/utils/date';
 import { TimerActions } from '~/store/ducks/timer';
 import { ProjectTimeActions } from '~/store/ducks/ProjectTime';
 
 function ProjectItem({ project }) {
   const [inicio, setInicio] = useState(null);
   const [fim, setFim] = useState(null);
+  const [timeDone, setTimeDone] = useState(0);
 
   const [ellapsed, setEllapsed] = useState(0);
   const [atual, setAtual] = useState('00:00:00');
@@ -42,7 +44,7 @@ function ProjectItem({ project }) {
 
   const pause = () => {
     dispatch(TimerActions.timerRemoveProject(project.id));
-    const fimMilis = Date.now()
+    const fimMilis = Date.now();
     setFim(fimMilis);
 
     const data = {
@@ -51,28 +53,32 @@ function ProjectItem({ project }) {
       fim: fimMilis,
       total: fimMilis - inicio,
       valor: (fimMilis - inicio) * valorMilis,
-      date: new Date()
-    }
+      date: getTimeTodayString(),
+    };
 
     dispatch(ProjectTimeActions.projectTimeSaveRequest(data));
+  };
+
+  const updateView = time => {
+    setEllapsed(time);
+    setAtual(formatMilisseconds(time));
+    setRestante(formatMilisseconds(max - time));
+    setMoney((valorMilis * time).toFixed(2));
   };
 
   useEffect(() => {
     if (timer.isPlaying && timer.projectsId.includes(project.id)) {
       const interval = setInterval(() => {
-        const time = Date.now() - inicio;
-        if (time <= max) {
-          setEllapsed(time);
-          setAtual(formatMilisseconds(time));
-          setRestante(formatMilisseconds(max - time));
-          setMoney((valorMilis * time).toFixed(2));
-        } else {
-          setEllapsed(time);
-          clearInterval(interval);
-        }
+        const time = Date.now() - inicio + timeDone;
+        updateView(time);
       }, 100);
       return () => clearInterval(interval);
     }
+
+    getTasksTimeToday(project.id, time => {
+      setTimeDone(time);
+      updateView(time);
+    });
   }, [timer]);
 
   return (

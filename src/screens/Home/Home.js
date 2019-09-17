@@ -1,47 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
+import { getTasks } from '~/services/firebase';
 
-import React, { useEffect } from 'react';
-import { getTest } from '~/services/firebase'
-
-import {
-  Container,
-  ListaProjetos
-} from './styles';
+import { Container, ListaProjetos } from './styles';
 import ProjectItem from '~/components/ProjectItem';
 
-const projects = [
-  {
-    id: 1,
-    name: 'Hans Club',
-    valueHour: 35,
-    timePerDay: 8,
-  },
-  {
-    id: 2,
-    name: 'Sunper SUS',
-    valueHour: 35,
-    timePerDay: 8,
-  },
-  {
-    id: 3,
-    name: 'Consultoria',
-    valueHour: 35,
-    timePerDay: 8,
-  },
-];
-
 function Home() {
-  useEffect( async () => {
-    getTest(lista => {
-      console.tron.log(lista)
-    })
-  }, [])
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getTasks(list => setTasks(list));
+  }, []);
 
   return (
     <Container>
       <ListaProjetos>
-        {projects.map(project => (
-          <ProjectItem project={project} />
+        {tasks.map(task => (
+          <ProjectItem project={task} />
         ))}
       </ListaProjetos>
     </Container>

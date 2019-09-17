@@ -1,8 +1,8 @@
 export const formatMilisseconds = milis => {
   if (milis > 1000) {
-    let seconds = parseInt((milis / 1000) % 60);
-    let minutes = parseInt((milis / (1000 * 60)) % 60);
-    let hours = parseInt((milis / (1000 * 60 * 60)) % 24);
+    const seconds = parseInt((milis / 1000) % 60);
+    const minutes = parseInt((milis / (1000 * 60)) % 60);
+    const hours = parseInt((milis / (1000 * 60 * 60)) % 24);
 
     let sText = '';
     let mText = '';
@@ -30,4 +30,9 @@ export const formatMilisseconds = milis => {
   }
 
   return '00:00:00';
+};
+
+export const getTimeTodayString = () => {
+  const now = new Date();
+  return `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`;
 };

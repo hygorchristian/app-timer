@@ -6,6 +6,7 @@ import Immutable from 'seamless-immutable';
 const { Types, Creators } = createActions({
   timerStart: null,
   timerStop: null,
+  timerSetInitialTime: ['start'],
   timerAddProject: ['projectId'],
   timerRemoveProject: ['projectId'],
 });
@@ -17,7 +18,6 @@ export const TimerActions = Creators;
 
 export const INITIAL_STATE = Immutable({
   initialTime: null,
-  endTime: null,
   projectsId: [],
   isPlaying: false,
 });
@@ -44,6 +44,11 @@ const timerRemoveProject = (state, { projectId }) => ({
   projectsId: state.projectsId.filter(item => item !== projectId),
 });
 
+const timerSetInitialTime = (state, { start }) => ({
+  ...state,
+  initialTime: start,
+});
+
 // Reducer
 
 export const TimerReducer = createReducer(INITIAL_STATE, {
@@ -51,4 +56,5 @@ export const TimerReducer = createReducer(INITIAL_STATE, {
   [Types.TIMER_STOP]: timerStop,
   [Types.TIMER_ADD_PROJECT]: timerAddProject,
   [Types.TIMER_REMOVE_PROJECT]: timerRemoveProject,
+  [Types.TIMER_SET_INITIAL_TIME]: timerSetInitialTime,
 });
